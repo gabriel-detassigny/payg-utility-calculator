@@ -2,15 +2,19 @@
 
 <?php
 
-require_once __DIR__ . '/../vendor/autoload.php';
+define('PROJECT_DIR', __DIR__ . '/..');
+
+require_once PROJECT_DIR . '/vendor/autoload.php';
 
 use GabrielDeTassigny\Puc\Command\Utility\ListUtilityCommand;
+use GabrielDeTassigny\Puc\Container\ServiceProvider;
 use League\Container\Container;
 use League\Container\ReflectionContainer;
 use Symfony\Component\Console\Application;
 
 $container = new Container();
 $container->delegate(new ReflectionContainer());
+$container->addServiceProvider($container->get(ServiceProvider\DoctrineServiceProvider::class));
 
 /** @var Application $app */
 $app = $container->get(Application::class);
