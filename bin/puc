@@ -5,12 +5,22 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use GabrielDeTassigny\Puc\Command\Utility\ListUtilityCommand;
+use League\Container\Container;
+use League\Container\ReflectionContainer;
 use Symfony\Component\Console\Application;
 
-$app = new Application();
+$container = new Container();
+$container->delegate(new ReflectionContainer());
 
-$app->addCommands([
-    new ListUtilityCommand()
-]);
+/** @var Application $app */
+$app = $container->get(Application::class);
+
+$commands = [
+    ListUtilityCommand::class
+];
+
+foreach ($commands as $command) {
+    $app->add($container->get($command));
+}
 
 $app->run();
