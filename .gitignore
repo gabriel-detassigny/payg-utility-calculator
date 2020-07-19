@@ -1,3 +1,2 @@
 vendor/
-db/*
-!db/.gitkeep
+db/db.sqlite
