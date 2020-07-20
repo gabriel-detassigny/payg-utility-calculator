@@ -24,7 +24,7 @@ class DoctrineServiceProvider extends AbstractServiceProvider
     public function register()
     {
         $config = Setup::createAnnotationMetadataConfiguration([PROJECT_DIR . '/src'], true, null, null, false);
-        $dbConnection = ['driver' => 'pdo_sqlite', 'path' => PROJECT_DIR . '/db/db.sqlite'];
+        $dbConnection = ['driver' => 'pdo_sqlite', 'path' => PROJECT_DIR . '/db/db.sqlite3'];
 
         $entityManager = EntityManager::create($dbConnection, $config);
 
