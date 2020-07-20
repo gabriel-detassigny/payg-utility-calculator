@@ -7,8 +7,7 @@ use GabrielDeTassigny\Puc\Repository\UtilityRepository;
 
 class UtilityProvider
 {
-    /** @var UtilityRepository */
-    private $utilityRepository;
+    private UtilityRepository $utilityRepository;
 
     public function __construct(UtilityRepository $utilityRepository)
     {

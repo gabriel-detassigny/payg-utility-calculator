@@ -12,10 +12,10 @@ use GabrielDeTassigny\Puc\Repository\UtilityRepository;
 class Utility
 {
     /** @ORM\Id @ORM\Column(type="integer") @ORM\GeneratedValue */
-    private $id;
+    private int $id;
 
     /** @ORM\Column(type="string", length=50, nullable=false, unique=true) */
-    private $name;
+    private string $name;
 
     public function getId(): int
     {

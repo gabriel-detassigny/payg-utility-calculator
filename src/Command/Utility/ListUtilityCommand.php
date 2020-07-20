@@ -9,8 +9,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class ListUtilityCommand extends Command
 {
-    /** @var UtilityProvider */
-    private $utilityProvider;
+    private UtilityProvider $utilityProvider;
 
     public function __construct(UtilityProvider $utilityProvider)
     {
