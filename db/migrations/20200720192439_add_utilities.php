@@ -9,6 +9,7 @@ final class AddUtilities extends AbstractMigration
     {
         $utilities = $this->table('utilities');
         $utilities->addColumn('name', 'string', ['limit' => 50])
+            ->addIndex(['name'], ['unique' => true])
             ->create();
     }
 }
