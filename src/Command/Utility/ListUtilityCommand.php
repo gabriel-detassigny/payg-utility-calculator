@@ -31,6 +31,8 @@ class ListUtilityCommand extends Command
     {
         $utilities = $this->utilityProvider->findAll();
 
+        $output->writeln('Available utilities:');
+
         foreach ($utilities as $utility) {
             $output->writeln($utility->getName());
         }
