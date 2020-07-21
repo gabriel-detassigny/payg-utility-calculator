@@ -31,7 +31,7 @@ class DoctrineServiceProvider extends AbstractServiceProvider
         $container = $this->getLeagueContainer();
 
         $container->add(EntityManager::class, $entityManager, true);
-        $container->add(EntityManagerInterface::class, EntityManager::class);
+        $container->add(EntityManagerInterface::class, $container->get(EntityManager::class));
 
         $container->add(UtilityRepository::class, $entityManager->getRepository(Utility::class), true);
     }

@@ -6,7 +6,7 @@ define('PROJECT_DIR', __DIR__ . '/..');
 
 require_once PROJECT_DIR . '/vendor/autoload.php';
 
-use GabrielDeTassigny\Puc\Command\Utility\ListUtilityCommand;
+use GabrielDeTassigny\Puc\Command;
 use GabrielDeTassigny\Puc\Container\ServiceProvider;
 use League\Container\Container;
 use League\Container\ReflectionContainer;
@@ -20,7 +20,8 @@ $container->addServiceProvider($container->get(ServiceProvider\DoctrineServicePr
 $app = $container->get(Application::class);
 
 $commands = [
-    ListUtilityCommand::class
+    Command\Utility\ListUtilityCommand::class,
+    Command\Utility\CreateUtilityCommand::class
 ];
 
 foreach ($commands as $command) {
