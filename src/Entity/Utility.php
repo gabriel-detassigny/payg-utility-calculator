@@ -11,10 +11,16 @@ use GabrielDeTassigny\Puc\Repository\UtilityRepository;
  */
 class Utility
 {
-    /** @ORM\Id @ORM\Column(type="integer") @ORM\GeneratedValue */
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue
+     */
     private int $id;
 
-    /** @ORM\Column(type="string", length=50, nullable=false, unique=true) */
+    /**
+     * @ORM\Column(type="string", length=50, nullable=false, unique=true)
+     */
     private string $name;
 
     public function getId(): int
