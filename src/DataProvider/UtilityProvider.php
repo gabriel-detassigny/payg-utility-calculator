@@ -4,6 +4,7 @@ namespace GabrielDeTassigny\Puc\DataProvider;
 
 use GabrielDeTassigny\Puc\Entity\Utility;
 use GabrielDeTassigny\Puc\Repository\UtilityRepository;
+use RuntimeException;
 
 class UtilityProvider
 {
@@ -20,5 +21,17 @@ class UtilityProvider
     public function findAll(): array
     {
         return $this->utilityRepository->findAll();
+    }
+
+    public function getByName(string $name): Utility
+    {
+        /** @var Utility|null $utility */
+        $utility = $this->utilityRepository->findOneBy(['name' => $name]);
+
+        if (is_null($utility)) {
+            throw new RuntimeException('No utility found with name: ' . $name);
+        }
+
+        return $utility;
     }
 }
