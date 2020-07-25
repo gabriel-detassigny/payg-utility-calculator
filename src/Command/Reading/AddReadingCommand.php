@@ -1,6 +1,6 @@
 <?php
 
-namespace GabrielDeTassigny\Puc\Command\Record;
+namespace GabrielDeTassigny\Puc\Command\Reading;
 
 use GabrielDeTassigny\Puc\DataPersister\ReadingPersister;
 use GabrielDeTassigny\Puc\DataProvider\UtilityProvider;
@@ -9,7 +9,7 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class RecordReadingCommand extends Command
+class AddReadingCommand extends Command
 {
     private ReadingPersister $readingPersister;
     private UtilityProvider $utilityProvider;
@@ -25,9 +25,10 @@ class RecordReadingCommand extends Command
     public function configure()
     {
         $this->setDescription('Record a meter reading')
-            ->setName('record:reading')
+            ->setName('reading:add')
             ->addArgument('utility', InputArgument::REQUIRED, 'The utility\'s name')
-            ->addArgument('amount', InputArgument::REQUIRED, 'The amount to record');
+            ->addArgument('amount', InputArgument::REQUIRED, 'The amount to record (after top-up, if any)')
+            ->addArgument('top-up', InputArgument::OPTIONAL, 'The amount of credits added');
     }
 
     /**
@@ -35,11 +36,11 @@ class RecordReadingCommand extends Command
      */
     public function execute(InputInterface $input, OutputInterface $output)
     {
-        $amount = (float) $input->getArgument('amount');
-        $utilityName = $input->getArgument('utility');
-
-        $utility = $this->utilityProvider->getByName($utilityName);
-        $this->readingPersister->addReading($utility, $amount);
+        $this->readingPersister->addReading(
+            $this->utilityProvider->getByName($input->getArgument('utility')),
+            (float) $input->getArgument('amount'),
+            $input->hasArgument('top-up') ? (float) $input->getArgument('top-up') : 0.0
+        );
 
         return Command::SUCCESS;
     }

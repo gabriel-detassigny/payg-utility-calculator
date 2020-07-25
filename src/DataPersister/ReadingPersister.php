@@ -16,7 +16,7 @@ class ReadingPersister
         $this->entityManager = $entityManager;
     }
 
-    public function addReading(Utility $utility, float $amount, float $topUp = 0.0): Reading
+    public function addReading(Utility $utility, float $amount, float $topUp): Reading
     {
         $reading = new Reading();
 
