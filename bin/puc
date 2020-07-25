@@ -22,7 +22,8 @@ $app = $container->get(Application::class);
 $commands = [
     Command\Utility\ListUtilityCommand::class,
     Command\Utility\CreateUtilityCommand::class,
-    Command\Reading\AddReadingCommand::class
+    Command\Reading\AddReadingCommand::class,
+    Command\Reading\ListReadingCommand::class
 ];
 
 foreach ($commands as $command) {
