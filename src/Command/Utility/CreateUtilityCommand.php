@@ -35,6 +35,8 @@ class CreateUtilityCommand extends Command
 
         $this->utilityPersister->createUtility($name);
 
+        $output->writeln('<info>Utility successfully created.</info>');
+
         return Command::SUCCESS;
     }
 }

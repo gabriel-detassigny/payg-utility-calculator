@@ -42,6 +42,8 @@ class AddReadingCommand extends Command
             $input->hasArgument('top-up') ? (float) $input->getArgument('top-up') : 0.0
         );
 
+        $output->writeln('<info>Reading successfully added.</info>');
+
         return Command::SUCCESS;
     }
 }

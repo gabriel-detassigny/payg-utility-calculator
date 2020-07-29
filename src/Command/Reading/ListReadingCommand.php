@@ -35,8 +35,7 @@ class ListReadingCommand extends Command
                 null,
                 InputOption::VALUE_REQUIRED,
                 'The maximum number of readings returned (Default: ' . self::DEFAULT_LIMIT . ')'
-            )
-        ;
+            );
     }
 
     /**
@@ -44,13 +43,14 @@ class ListReadingCommand extends Command
      */
     public function execute(InputInterface $input, OutputInterface $output)
     {
-        $utility = $this->utilityProvider->getByName($input->getArgument('utility'));
         $limit = (int) ($input->getOption('limit') ?? self::DEFAULT_LIMIT);
+
+        $utility = $this->utilityProvider->getByName($input->getArgument('utility'));
 
         $utilities = $this->readingProvider->findLatestReadings($utility, $limit);
 
-        $output->writeln('Latest ' . $utility->getName() . ' readings:');
-        $output->writeln("Added\t\t\tAmount\tTop Up");
+        $output->writeln('<info>Latest ' . $utility->getName() . ' readings:</info>');
+        $output->writeln("<info>Added\t\t\tAmount\tTop Up</info>");
 
         foreach ($utilities as $utility) {
             $output->write($utility->getAdded()->format('Y-m-d H:i:s') . "\t");
