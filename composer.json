@@ -18,5 +18,10 @@
     },
     "require-dev": {
         "phpunit/phpunit": "^9.2"
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "vendor/bin/phinx migrate"
+        ]
     }
 }
