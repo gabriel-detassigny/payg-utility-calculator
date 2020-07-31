@@ -11,7 +11,7 @@ class CalculateCommand extends Command
 {
     public function configure()
     {
-        $this->setDescription('CalculateCommand the day your utility credit might expire')
+        $this->setDescription('Calculate the day your utility credit might expire')
             ->setName('expiration:calculate')
             ->addArgument('utility', InputArgument::REQUIRED, 'The utility\'s name');
     }
