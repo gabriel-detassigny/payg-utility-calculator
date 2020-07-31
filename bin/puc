@@ -20,10 +20,11 @@ $container->addServiceProvider($container->get(ServiceProvider\DoctrineServicePr
 $app = $container->get(Application::class);
 
 $commands = [
-    Command\Utility\ListUtilityCommand::class,
-    Command\Utility\CreateUtilityCommand::class,
-    Command\Reading\AddReadingCommand::class,
-    Command\Reading\ListReadingCommand::class
+    Command\Expiration\CalculateCommand::class,
+    Command\Reading\AddCommand::class,
+    Command\Reading\ListCommand::class,
+    Command\Utility\CreateCommand::class,
+    Command\Utility\ListCommand::class,
 ];
 
 foreach ($commands as $command) {

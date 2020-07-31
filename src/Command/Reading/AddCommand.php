@@ -9,7 +9,7 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class AddReadingCommand extends Command
+class AddCommand extends Command
 {
     private ReadingPersister $readingPersister;
     private UtilityProvider $utilityProvider;
