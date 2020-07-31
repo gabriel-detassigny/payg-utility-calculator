@@ -38,9 +38,6 @@ class ListCommand extends Command
             );
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function execute(InputInterface $input, OutputInterface $output)
     {
         $limit = (int) ($input->getOption('limit') ?? self::DEFAULT_LIMIT);

@@ -24,9 +24,6 @@ class ListCommand extends Command
             ->setName('utility:list');
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function execute(InputInterface $input, OutputInterface $output)
     {
         $utilities = $this->utilityProvider->findAll();

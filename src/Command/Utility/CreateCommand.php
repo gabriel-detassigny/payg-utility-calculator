@@ -26,9 +26,6 @@ class CreateCommand extends Command
             ->addArgument('name', InputArgument::REQUIRED, 'The utility\'s name');
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function execute(InputInterface $input, OutputInterface $output)
     {
         $name = $input->getArgument('name');

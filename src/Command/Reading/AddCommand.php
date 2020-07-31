@@ -31,9 +31,6 @@ class AddCommand extends Command
             ->addArgument('top-up', InputArgument::OPTIONAL, 'The amount of credits added');
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function execute(InputInterface $input, OutputInterface $output)
     {
         $this->readingPersister->addReading(

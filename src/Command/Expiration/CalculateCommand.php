@@ -16,9 +16,6 @@ class CalculateCommand extends Command
             ->addArgument('utility', InputArgument::REQUIRED, 'The utility\'s name');
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function execute(InputInterface $input, OutputInterface $output)
     {
         return Command::SUCCESS;
