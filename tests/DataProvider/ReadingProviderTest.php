@@ -47,11 +47,11 @@ class ReadingProviderTest extends TestCase
      * @dataProvider expirationProvider
      */
     public function testCalculateExpiration(
+        string $previousTime,
+        float $previousAmount,
         string $latestTime,
         float $latestAmount,
         float $latestTopUp,
-        string $previousTime,
-        float $previousAmount,
         string $expectedTime
     ) {
         $latestReading = new Reading();
@@ -78,7 +78,9 @@ class ReadingProviderTest extends TestCase
     public function expirationProvider(): array
     {
         return [
-            ['2020-01-02 00:00:00', 20, 10, '2020-01-01 00:00:00', 20, '2020-01-04 00:00:00']
+            ['2020-01-01 00:00:00', 20, '2020-01-02 00:00:00', 20, 10, '2020-01-04 00:00:00'],
+            ['2020-01-01 00:00:00', 40, '2020-01-08 00:00:00', 20, 20, '2020-01-11 12:00:00'],
+            ['2020-01-31 12:00:00', 50, '2020-02-27 00:00:00', 50, 40, '2020-03-31 03:00:00']
         ];
     }
 }

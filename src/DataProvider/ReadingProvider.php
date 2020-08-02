@@ -2,7 +2,6 @@
 
 namespace GabrielDeTassigny\Puc\DataProvider;
 
-use DateInterval;
 use DateTime;
 use GabrielDeTassigny\Puc\Entity\Reading;
 use GabrielDeTassigny\Puc\Entity\Utility;
