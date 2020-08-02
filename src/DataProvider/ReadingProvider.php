@@ -36,12 +36,15 @@ class ReadingProvider
     {
         [$latest, $previous] = $this->getLatestTwoReadings($utility);
 
-        $timeDifference = $this->getPreviousTimeDifferenceInHours($latest->getAdded(), $previous->getAdded());
+        $timeDifference = $this->getPreviousTimeDifferenceInSec($latest->getAdded(), $previous->getAdded());
         $amountDifference = $previous->getAmount() - ($latest->getAmount() - $latest->getTopUp());
 
-        $expirationInHours = (int) ($timeDifference / $amountDifference * $latest->getAmount());
+        $expirationInSec = (int) ($timeDifference / $amountDifference * $latest->getAmount());
 
-        return $latest->getAdded()->add(new DateInterval("PT${expirationInHours}H"));
+        $expirationTime = new DateTime();
+        $expirationTime->setTimestamp($latest->getAdded()->getTimestamp() + $expirationInSec);
+
+        return $expirationTime;
     }
 
     /**
@@ -59,10 +62,8 @@ class ReadingProvider
         return $readings;
     }
 
-    private function getPreviousTimeDifferenceInHours(DateTime $latest, DateTime $previous): float
+    private function getPreviousTimeDifferenceInSec(DateTime $latest, DateTime $previous): int
     {
-        $interval = $latest->diff($previous);
-
-        return (float) $interval->format('%h');
+        return $latest->getTimestamp() - $previous->getTimestamp();
     }
 }
