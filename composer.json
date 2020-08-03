@@ -14,7 +14,8 @@
         "symfony/console": "^5.1",
         "doctrine/orm": "^2.7",
         "league/container": "^3.3",
-        "robmorgan/phinx": "^0.12"
+        "robmorgan/phinx": "^0.12",
+        "eluceo/ical": "^0.16.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.2",
